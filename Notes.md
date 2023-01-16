@@ -2,6 +2,7 @@
 * ``` mv ```  = mover
 * ``` erase ``` = apagar arquivo
 * ``` enter-pssession server01 ```  = conecta remotamente em um servidor.
+* ``` dir env: ``` = verifica as informações da váriavel de sistema
   
   **Se apresentar erros para conectar, execute os seguintes passos**
 
