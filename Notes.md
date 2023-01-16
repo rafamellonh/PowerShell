@@ -32,3 +32,4 @@
 * ``` Get-ADObject -Filter * -SearchBase "OU=Domain Controllers,DC=mello,DC=local" ``` = procura conteúdo dentro de uma OU
 * ``` New-ADorganizationalUnit -Name DEV -Path "ou=TI,dc=mello,dc=local" ``` = criar uma OU dentro de outra OU
 * ``` New-ADUser -SamAccountName "rafael.mello" -GivenName "Rafael" -Surname "Mello" -Name "Rafael Mello" -UserPrincipalName "rafael.mello@mello.local" -AccountPassword (ConvertTo-SecureString -AsPlainText "abc@123," -Force) -ChangePasswordAtLogon $true  ``` = criando um usuário
+* ``` get-aduser -Filter * | Where-Object {$_.SamAccountName -like "*rafa*"} ```  = pesquisa um usuário
