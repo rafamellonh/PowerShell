@@ -1,6 +1,6 @@
-* cp = copiar
-* mv = mover
-* erase = apagar arquivo
+* ``` cp ```  = copiar
+* ``` mv ```  = mover
+* ``` erase ``` = apagar arquivo
 * ``` enter-pssession server01 ```  = conecta remotamente em um servidor.
   
   **Se apresentar erros para conectar, execute os seguintes passo**
