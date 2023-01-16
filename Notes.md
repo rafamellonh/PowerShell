@@ -10,3 +10,5 @@
   ``` Set-Item WSMan:\localhost\Client\TrustedHosts -Value "IP DO PC que quer conectar" ``` 
 
 * ``` get-windowsfeature ```  = obtem lista de features para instalar no windows server (``` get-windowsfeature -name *dns* ``` )
+* ``` install-WindowsFeature -Name Windows-Server-Backup ``` = instala uma feature
+* ``` Remove-WindowsFeature -Name rsat-fax ```  = remove uma feature
