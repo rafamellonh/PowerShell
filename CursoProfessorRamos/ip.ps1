@@ -1,1 +1,0 @@
-Get-Service | Where-Object {$_.DisplayName -like "*anyd*"}

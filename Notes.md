@@ -34,3 +34,4 @@
 * ``` New-ADUser -SamAccountName "rafael.mello" -GivenName "Rafael" -Surname "Mello" -Name "Rafael Mello" -UserPrincipalName "rafael.mello@mello.local" -AccountPassword (ConvertTo-SecureString -AsPlainText "abc@123," -Force) -ChangePasswordAtLogon $true  ``` = criando um usuário
 * ``` get-aduser -Filter * | Where-Object {$_.SamAccountName -like "*rafa*"} ```  = pesquisa um usuário
 * ``` Set-ADAccountPassword -Identity "rafael.mello" -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "abc9eq" -Force) ```  = trocar a senha
+* ``` New-ADGroup -Name redes -SamAccountName redes -DisplayName redes -Path "OU=ti,dc=mello,dc=local" -GroupScope Global -GroupCategory Security ```  = criando um grupo
