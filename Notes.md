@@ -3,6 +3,7 @@
 * erase = apagar arquivo
 * enter-pssession server01 = conecta remotamente em um servidor.
   
-  ``` Se apresentar erros para conectar, execute os seguintes passo ```  
+  ** Se apresentar erros para conectar, execute os seguintes passo **
   ``` start-service winrm ``` 
+  
   ``` Set-Item WSMan:\localhost\Client\TrustedHosts -Value "IP DO PC que quer conectar" ``` 
