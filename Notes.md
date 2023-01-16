@@ -28,6 +28,7 @@
 * ``` Import-Module -Name ActiveDirectory ``` = importar o modulo do Active Directory
 * ``` Get-Command -Module ActiveDirectory ``` = valide os comandos disponiveis 
 * ``` ls ad: ``` ``` dir ad: ``` ``` get-childiten ad: ```  = obtem informações sobre o AD
+* ``` get-childiten ad:\"dc=mello,dc=local" ``` 
 * ``` get-aduser administrator -Properties lastlogondate ```
 * ``` $OU = Get-ADorganizationalUnit -Filter *   ```  ``` Write-Output $OU.name  ``` 
 * ``` Get-ADObject -Filter * -SearchBase "OU=Domain Controllers,DC=mello,DC=local" ``` = procura conteúdo dentro de uma OU
