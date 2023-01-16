@@ -20,10 +20,12 @@
 
 ## Conversão de saída de informações
 
-* ``` ConvertTO-html ``` 
+* ``` ConvertTO-html ```  ``` convertTO-csv ```  = converte informações para arquivos 
   * ``` Get-ADComputer -Filter * | ConvertTo-Html | Out-File "micros.html" ``` 
-## Comandos pada AD
+## Comandos para AD
 
 * ``` Import-Module -Name ActiveDirectory ``` = importar o modulo do Active Directory
 * ``` Get-Command -Module ActiveDirectory ``` = valide os comandos disponiveis 
 * ``` ls ad: ``` ``` dir ad: ``` ``` get-childiten ad: ```  = obtem informações sobre o AD
+* ``` get-aduser administrator -Properties lastlogondate ```
+* ``` $OU = Get-ADorganizationalUnit -Filter *   ```  ``` Write-Output $OU.name  ``` 
