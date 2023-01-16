@@ -18,6 +18,10 @@
 * ``` New-NetIPAddress 192.168.25.113 -InterfaceAlias Ethernet -DefaultGateway 192.168.25.254 -PrefixLength 24 -AddressFamily IPv4 ```  = configuração de IP
 * ``` Set-DnsClientServerAddress -InterfaceIndex Ethernet -ServerAddresses 8.8.8.8 ```  = Configuração de DNS
 
+## Conversão de saída de informações
+
+* ``` ConvertTO-html ``` 
+  * ``` Get-ADComputer -Filter * | ConvertTo-Html | Out-File "micros.html" ``` 
 ## Comandos pada AD
 
 * ``` Import-Module -Name ActiveDirectory ``` = importar o modulo do Active Directory
