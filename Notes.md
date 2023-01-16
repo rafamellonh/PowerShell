@@ -3,7 +3,7 @@
 * ``` erase ``` = apagar arquivo
 * ``` enter-pssession server01 ```  = conecta remotamente em um servidor.
   
-  **Se apresentar erros para conectar, execute os seguintes passo**
+  **Se apresentar erros para conectar, execute os seguintes passos**
 
   ``` start-service winrm ``` 
 
@@ -17,3 +17,7 @@
 * ``` Get-NetIPConfiguration ```  ``` Get-NetIPAddress ``` = obter configurações de rede
 * ``` New-NetIPAddress 192.168.25.113 -InterfaceAlias Ethernet -DefaultGateway 192.168.25.254 -PrefixLength 24 -AddressFamily IPv4 ```  = configuração de IP
 * ``` Set-DnsClientServerAddress -InterfaceIndex Ethernet -ServerAddresses 8.8.8.8 ```  = Configuração de DNS
+
+## Comandos pada AD
+
+* ``` Import-Module -Name ActiveDirectory ``` 
