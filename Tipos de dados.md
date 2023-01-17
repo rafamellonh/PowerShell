@@ -10,7 +10,7 @@
 * int16 = inteiro 16 bits ``` [int16]$valor = 900 ``` 
 * int32, int = inteiro de 32 bits ``` [int32]$valor = 150000 ``` 
 * int64, long = inteiro 64 bits ``` [int64]$value = 5000000000 ``` 
-* single, float = single-precision floating point number ``` [single]$preco = 9.99 ``` 
+* float, single  = single-precision floating point number ``` [single]$preco = 9.99 ``` 
 * string = string ``` [string]$mensagem = "aprovado" ``` 
 * timespan = intervalo de tempo
 

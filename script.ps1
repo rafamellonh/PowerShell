@@ -5,3 +5,8 @@ $preco = 4.99
 Write-Host $nome.GetType().Name
 Write-Host $preco.GetType().Name
 
+[float]$temp = 4.99
+Write-Host $temp.GetType().Name
+
+$festa = [datetime]"3/11/2020"
+Write-Host $festa
