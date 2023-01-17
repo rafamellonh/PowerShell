@@ -10,3 +10,4 @@ Write-Host $temp.GetType().Name
 
 $festa = [datetime]"3/11/2020"
 Write-Host $festa
+Write-Host $festa.GetType().Name
