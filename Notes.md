@@ -41,3 +41,4 @@
 ## Variáveis
 
 * ``` new-variable -name $nome "teste" -option ReadHonly```  = cria uma nova variável somente leitura
+* ``` Write-Host $nome.GetType().Name ```  = mostra o tipo que é a variável

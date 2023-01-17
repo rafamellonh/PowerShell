@@ -1,2 +1,7 @@
 $nome = Read-Host "Como se chama?"
-write-host "Seja Bem vindo" $nome
+$preco = 4.99
+#write-host "Seja Bem vindo" $nome
+
+Write-Host $nome.GetType().Name
+Write-Host $preco.GetType().Name
+
