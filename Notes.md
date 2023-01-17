@@ -37,3 +37,7 @@
 * ``` get-aduser -Filter * | Where-Object {$_.SamAccountName -like "*rafa*"} ```  = pesquisa um usuário
 * ``` Set-ADAccountPassword -Identity "rafael.mello" -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "abc9eq" -Force) ```  = trocar a senha
 * ``` New-ADGroup -Name redes -SamAccountName redes -DisplayName redes -Path "OU=ti,dc=mello,dc=local" -GroupScope Global -GroupCategory Security ```  = criando um grupo
+
+## Variáveis
+
+* ``` new-variable -name $nome "teste" -option ReadHonly```  = cria uma nova variável somente leitura
