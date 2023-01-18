@@ -12,4 +12,11 @@ $festa = [datetime]"3/11/2020"
 Write-Host $festa
 Write-Host $festa.GetType().Name
 
-01
+Write-Host (5+6)
+$soma = 5 + 6
+Write-Host $soma
+
+# Aqui ele vai trocar todas os campos que tem mello para confidencial
+(Get-Content .\teste.txt) -replace "(mello)", "Confidencial"
+
+#
