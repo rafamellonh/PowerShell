@@ -68,3 +68,10 @@ $testoLongo
 `u{x}	Sequência de escape Unicode (adicionada ao PowerShell 6)
 `v	Guia vertical
 
+## Estruturas de decisão
+
+if (Get-Process Notepad) {
+    "Programa aberto"
+}else {
+    "Program fechado"
+}
