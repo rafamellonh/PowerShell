@@ -43,3 +43,10 @@
 * ``` new-variable -name $nome "teste" -option ReadHonly```  = cria uma nova variável somente leitura
 * ``` Write-Host $nome.GetType().Name ```  = mostra o tipo que é a variável
 * Variable com o nome em maiúsculo, quer dizer que é uma constante, é uma variável que não pode ser alterada
+
+## String multilinhs
+
+@"
+Insira qualquer coisa aqui dentro
+Teste
+"@
