@@ -18,6 +18,8 @@
 * ``` Get-NetIPConfiguration ```  ``` Get-NetIPAddress ``` = obter configurações de rede
 * ``` New-NetIPAddress 192.168.25.113 -InterfaceAlias Ethernet -DefaultGateway 192.168.25.254 -PrefixLength 24 -AddressFamily IPv4 ```  = configuração de IP
 * ``` Set-DnsClientServerAddress -InterfaceIndex Ethernet -ServerAddresses 8.8.8.8 ```  = Configuração de DNS
+* ``` write-host``` = serve para escrever na tela, pode ser usado com vários parametros.
+* ``` select-string ```  = traz informação de dentro de um arquivo ``` select-string -path \testo.txt -pattern "ola"``` 
 
 ## Conversão de saída de informações
 
