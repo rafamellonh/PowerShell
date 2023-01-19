@@ -8,3 +8,12 @@ if ($result -eq 0) {
 
 
 Get-Command *var*
+
+$erro = Get-EventLog -LogName 'Veeam Backup' | Where-Object {$_.Message -like "*is not synchronized with the DB*"} 
+
+if ($erro -like "is not synchronized wi") {
+    C:\Zabbix\scripts\RESCAN_HDEXTERNO.PS1
+}
+else {
+    Write-Output "test"
+}
