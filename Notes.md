@@ -44,9 +44,25 @@
 * ``` Write-Host $nome.GetType().Name ```  = mostra o tipo que é a variável
 * Variable com o nome em maiúsculo, quer dizer que é uma constante, é uma variável que não pode ser alterada
 
-## String multilinhs
+## String multilinhas
 
-@"
+$testoLongo = @"
 Insira qualquer coisa aqui dentro
 Teste
 "@
+
+$testoLongo 
+
+## Caracter de escape
+
+`0	Nulo
+`a	Alerta
+`b	Backspace
+`e	Escape (adicionado ao PowerShell 6)
+`f	Avanço de formulário
+`n	Nova linha
+`r	Retorno de carro
+`t	Guia horizontal
+`u{x}	Sequência de escape Unicode (adicionada ao PowerShell 6)
+`v	Guia vertical
+
