@@ -5,3 +5,6 @@ if ($result -eq 0) {
 }else {
     Write-Output "IMPAR"
 }
+
+
+Get-Command *var*

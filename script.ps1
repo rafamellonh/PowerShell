@@ -26,3 +26,4 @@ foreach ($item in $array)
     Write-Output $item    
 }
 Write-Output $array[3]
+
