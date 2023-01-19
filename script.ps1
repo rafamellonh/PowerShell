@@ -19,4 +19,10 @@ Write-Host $soma
 # Aqui ele vai trocar todas os campos que tem mello para confidencial
 (Get-Content .\teste.txt) -replace "(mello)", "Confidencial"
 
-#
+$array = @(1,2,3,4,5)
+
+foreach ($item in $array)
+{
+    Write-Output $item    
+}
+Write-Output $array[3]
