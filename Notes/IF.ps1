@@ -13,3 +13,16 @@ if (2 -lt $numero) {
 if (2 -gt $numero) {
     "2 é maior que " + $numero
 }
+
+
+
+$numero = Read-Host "Valor" 
+if (2 -eq $numero) {
+    "2 é igual a " + $numero
+}
+elseif (2 -lt $numero) {
+    "2 é menor que " + $numero
+}
+else (2 -gt $numero) {
+    "2 é maior que " + $numero
+}
