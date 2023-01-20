@@ -18,3 +18,20 @@ do {
 (
     ($n1 -ne 0 -and $n2 -ne 0)
 )
+
+$n = 0
+
+while ($n -le 20) {
+    $n++
+    if ($n % 2 -eq 0) {continue}
+    else {"$n é impar"}
+}
+
+#contar até 10 no break
+
+$c = 0
+while ($c -le 1000) {
+    if($c -eq 11) {break}
+    Write-Host $c
+    $c++
+}
