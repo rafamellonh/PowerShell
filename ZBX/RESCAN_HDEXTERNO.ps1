@@ -1,4 +1,5 @@
+#sincroniza repositório do veeam sem precisar definir nomes
 Add-PSSnapin VeeamPSSnapin
-Get-VBRBackupRepository -Name "HD-EXTERNO-HV01" | Sync-VBRBackupRepository > "C:\Supportti\Script\return_rescan.txt"
-Get-VBRBackupRepository -Name "HD-EXTERNO-HV02" | Sync-VBRBackupRepository >> "C:\Supportti\Script\return_rescan.txt"
-
+$bkprepository = @(Get-VBRBackupRepository)
+$bkprepository[0..5]
+Sync-VBRBackupRepository -Repository $bkprepository[0..5]

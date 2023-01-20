@@ -23,6 +23,9 @@ if (2 -eq $numero) {
 elseif (2 -lt $numero) {
     "2 é menor que " + $numero
 }
-else (2 -gt $numero) {
+elseif(2 -gt $numero) {
     "2 é maior que " + $numero
+}
+else {
+    "Esse valor é incorreto"
 }
