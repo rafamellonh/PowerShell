@@ -11,6 +11,6 @@ foreach ($item in $matriz) {
 foreach ($cor in [Enum]::GetValues([System.ConsoleColor])){Write-Host "      " -BackgroundColor $cor}
 
 #Mostar o nome de todos os arquivos na pasta que tem mais de 1mb
-foreach ($arq in Get-ChildItem C:\Windows\System32 -File) {
-    if ($arq.lenght -gt 1mb) {$arq.name}
+ForEach($arq in Get-ChildItem c:\Windows\System32 -File){
+    if($arq.length -gt 1mb){$arq.Name}
 }
