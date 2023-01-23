@@ -19,3 +19,14 @@ for ($i = 0; $i -lt $processos.lenght) {
 }
 
 $total = $soma / 1mb
+
+
+# FOR ANINHADO
+
+for ($i = 1; $i -le 3; $i++) {
+    # $i vale 1 e enquanto $i for menor que 3, incremente 1
+    for ($f = 1; $f -le 3; $f++){
+    # $f vale 1 e enquanto $f for menor que 3, incremente 1
+        Write-Host("$i - $f")
+    }
+}
