@@ -22,3 +22,6 @@ $matriz[3] #mostra o que tem na posição 3 da matriz
 #mostra somente o que tem dentro de cada casa na matriz
 $num = 1..20
 $num[2,4,5,13]
+$num[3..5]
+
+#### ArrayList - List
