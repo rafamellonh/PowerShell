@@ -17,7 +17,7 @@ foreach ($n in $matriz) {
 
 $matriz[3] #mostra o que tem na posição 3 da matriz
 
-@matriz1 = @(3)
+#@matriz1 = @(3)
 
 #mostra somente o que tem dentro de cada casa na matriz
 $num = 1..20
