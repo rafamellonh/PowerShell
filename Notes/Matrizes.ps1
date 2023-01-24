@@ -25,3 +25,8 @@ $num[2,4,5,13]
 $num[3..5]
 
 #### ArrayList - List
+
+#importar classes names spaces do dotnet
+
+using assembly system.collections
+using
