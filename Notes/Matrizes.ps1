@@ -27,6 +27,3 @@ $num[3..5]
 #### ArrayList - List
 
 #importar classes names spaces do dotnet
-
-using assembly system.collections
-using
