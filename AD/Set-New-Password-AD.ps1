@@ -1,4 +1,15 @@
-#alterar a senha de uma conde de user do AD
+
+# Forma simples
+$user = Get-ADUser -filter { name -like "*gaz*"}
+$name = $user.SamAccountName
+$name
+$mypassword = ConvertTo-SecureString -AsPlainText -Force -String "ale@one#123"
+Set-ADAccountPassword  -Identity $name -Reset -NewPassword  $mypassword
+
+# Solicita as credenciais
+$mycredentials = Get-Credential
+
+#alterar a senha de uma conta de user do AD
 $myusername = $mycredentials.UserName
 $mypassword = $mycredentials.Password
 Set-ADAccountPassword -Identity $myusername -Reset -NewPassword $mypassword
