@@ -1,4 +1,4 @@
-#sincroniza repositÃ³rio do veeam sem precisar definir nomes
+#sincroniza repositório do veeam sem precisar definir nomes
 Add-PSSnapin VeeamPSSnapin
 $bkprepository = @(Get-VBRBackupRepository)
 $bkprepository[0..5]

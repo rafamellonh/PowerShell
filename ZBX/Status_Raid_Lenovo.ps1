@@ -1,1 +1,1 @@
-﻿rstcli64 -I -v RAID1 | Select-String -Pattern 'State:' | select -first 1 |  % {$_ -replace ("`t", " ")} |  % {$_ -replace ("State:", " ")} |  % {$_ -replace (" ", "")}
+﻿rstcli64 -I -v RAID10 | Select-String -Pattern 'State:' | select -first 1 |  % {$_ -replace ("`t", " ")} |  % {$_ -replace ("State:", " ")} |  % {$_ -replace (" ", "")}
