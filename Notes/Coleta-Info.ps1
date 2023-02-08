@@ -31,3 +31,21 @@ Get-EventLog -logname system -Newest 100 | Where-Object EventID -eq "1074" | Sel
 
 
 ######## coleta de informações de rede
+Get-NetIPAddress 
+get-netiPConfiguration
+Test-NetConnection 8.8.8.8
+Test-NetConnection 8.8.8.8 -TraceRoute
+
+
+# Trabalhando com registros
+Get-PSProvider 
+Set-Location -Path HKLM:    
+# https://learn.microsoft.com/pt-br/powershell/scripting/samples/working-with-registry-entries?view=powershell-7.3
+
+# Trabalhando arquivos e impressoras
+help Get-ChildItem
+help Get-ChildItem -Examples
+Get-ChildItem -Path d: -Include *.png -Recurse
+Get-ChildItem -Path d: -Include *.png -Recurse | Copy-Item -Destination e:\tmp
+new-item -Type Directory -Path d:\ -name "temp"
+
