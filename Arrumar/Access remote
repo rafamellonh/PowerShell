@@ -14,6 +14,6 @@ winrm set winrm/config/client @{TrustedHosts="192.168.5.25"}
 
 winrm create winrm/config/listener?Address=*+Transport=HTTP
 
-New-WSManInstance winrm/config/Listener -SelectorSet @{Address="IP:192.168.5.248";Transport="http"
+#New-WSManInstance winrm/config/Listener -SelectorSet @{Address="IP:192.168.5.248";Transport="http"
 
 
