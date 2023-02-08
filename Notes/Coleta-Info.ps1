@@ -23,3 +23,11 @@ Get-WmiObject -Class win32_bios
 
 # Pode ser utilizado também o get-ciminstance que o resultado será o mesmo
 Get-CimInstance -ClassName win32_bios
+
+# Eventlog
+Get-EventLog -log Application -Source outlook | where {$_.eventid -eq 34}
+Get-EventLog -logname system -Newest 100 | Where-Object EventID -eq "1074"
+Get-EventLog -logname system -Newest 100 | Where-Object EventID -eq "1074" | Select-Object -ExcludeProperty Message  # expande a mensagem
+
+
+######## coleta de informações de rede
