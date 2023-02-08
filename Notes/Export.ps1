@@ -11,3 +11,10 @@ get-service -name "*team*" -ComputerName SRV01 | Export-Csv -Path D:\temp\Servic
 
 #exporta o resultado para um TXT
 get-history | Out-File -FilePath d:\temp\history.txt
+
+#verifica quais comandos podem ser utilizados para formatar dados
+Get-Command -name format*
+
+Get-Service | Format-Table -Property name, status -AutoSize
+Get-Service | Format-list -Property name, status 
+Get-Service | Out-GridView
