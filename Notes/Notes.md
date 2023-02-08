@@ -21,6 +21,9 @@
 * ``` write-host``` = serve para escrever na tela, pode ser usado com vários parametros.
 * ``` select-string ```  = traz informação de dentro de um arquivo ``` select-string -path \testo.txt -pattern "ola"``` 
 
+
+## Get's
+* ``` get-verb ```  = mostra todos os verbes aprovados pelo powershell
 ## Conversão de saída de informações
 
 * ``` ConvertTO-html ```  ``` convertTO-csv ```  = converte informações para arquivos 

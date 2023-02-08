@@ -5,3 +5,9 @@ Get-Service | where Status -eq "Stopped" | Select-Object -Property Name, Display
 
 # para abrir no notepad
 notepad.exe D:\temp\Services.csv
+
+#Da um get em um computador removo
+get-service -name "*team*" -ComputerName SRV01 | Export-Csv -Path D:\temp\Services.csv
+
+#exporta o resultado para um TXT
+get-history | Out-File -FilePath d:\temp\history.txt
