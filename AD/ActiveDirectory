@@ -1,0 +1,20 @@
+👉 Mostra todas as partições de replicação do AD
+
+Repadmin /showrepl 
+
+👉 Dispara 5 tentativas de replicação
+
+repamin /replsummary    
+
+👉 Faz uma verificação mais profunda
+
+dcdiag
+
+👉 Consultar quem são os mestres fsmo
+
+ Netdom query fsmo
+
+
+👉 Create Bulk Users in Active Directory (Step-By-Step Guide)
+
+https://activedirectorypro.com/create-bulk-users-active-directory/

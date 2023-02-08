@@ -1,0 +1,2 @@
+#Del files < 30
+forfiles -p "C:\nddCargo\Agente\log" -s -m *.* /D -30 /C "cmd /c del @path"

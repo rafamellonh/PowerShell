@@ -1,0 +1,2 @@
+💻 Capturar o ID do Anydesk
+Select-String -Path C:\ProgramData\AnyDesk\system.conf "id="

@@ -1,0 +1,15 @@
+# Alterar nome na NIC 
+
+#Procura adaptadores na vm FW com o nome Adaptador de Rede com o MAC especificado e renomeia para VLANS
+Get-VMNetWorkAdapter -VMName FW -Name "Adaptador de Rede" | Where-Object MacAddress -EQ "00155D402906" | Rename-VMNetworkAdapter -NewName "VLANS" 
+
+#Verifica as VLANs existentes
+Get-VM -Name VM01 | Get-VMNetworkAdapterVlan
+
+#Adiciona 3 VLANs na NIC
+Set-VMNetworkAdapterVlan -VMName FW -Trunk -AllowedVlanIdList 100-500 -NativeVlanId 1 -VMNetworkAdapterName "VLANS"
+
+#Verifica as VLANs existentes
+Get-VM -Name VM01 | Get-VMNetworkAdapterVlan
+
+#Consulte imagem GetNic.png

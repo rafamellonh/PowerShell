@@ -1,0 +1,1 @@
+Copy-VMFile "SERVER01" -SourcePath "c:\temp\teste.txt" -DestinationPath "c:\temp" -CreateFullPath -FileSource Host

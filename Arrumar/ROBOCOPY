@@ -1,0 +1,1 @@
+robocopy \\localhost\c$\dados r:\dados /E /TEE /ETA /SEC /MT:32 /MIR /R:0 /COPYALL /B /XD /LOG:c:\temp\logs.txt

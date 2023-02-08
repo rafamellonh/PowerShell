@@ -1,0 +1,19 @@
+# Access remote
+
+Enable-PSRemoting 
+
+set-Item WSMan:localhost\client\trustedhosts 192.168.5.25 
+
+restart-service winrm 
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Force -Value 192.168.5.25
+
+winrm set winrm/config/client @{TrustedHosts="192.168.5.248"} 
+
+winrm set winrm/config/client @{TrustedHosts="192.168.5.25"} 
+
+winrm create winrm/config/listener?Address=*+Transport=HTTP
+
+New-WSManInstance winrm/config/Listener -SelectorSet @{Address="IP:192.168.5.248";Transport="http"
+
+

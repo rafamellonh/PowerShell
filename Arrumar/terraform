@@ -1,0 +1,16 @@
+Verificar SKUs e Offer de VMS no Azure
+
+
+az login
+$location = "brazilsouth"
+Get-AzVMImagePublisher -Location $location | Select PublisherName
+Get-AzVMImagePublisher -Location $location | Select PublisherName | Where-Object { $_.PublisherName -like '*Windows*' }
+
+#listando as ofertas
+#$publisher = "MicrosoftWindowsDesktop"
+$publisher = "MicrosoftWindowsServer"
+Get-AzVMImageOffer -Location $location -PublisherName $publisher | Select Offer
+
+#listando os SKUs
+$offer = "windowsServer"
+Get-AzVMImageSku -Location $location -PublisherName $publisher -Offer $offer | Select Skus

@@ -1,0 +1,2 @@
+#RunAS
+C:\Windows\System32\runas.exe /savecred /user:administrador "C:\Senior\GED\GED.exe"

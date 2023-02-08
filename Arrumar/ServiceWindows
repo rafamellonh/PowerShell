@@ -1,0 +1,3 @@
+sc queryex NOMEdoSERVIÇO
+
+TASKKILL /f /pid NUMERO-DO-PID

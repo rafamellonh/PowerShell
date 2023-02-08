@@ -1,0 +1,6 @@
+Get-HotFix | Where-Object ($_.hotfixid -like "014702")
+
+Get-Hotfix | Sort InstalledOn
+
+# Obtenha o histórico de atualizações instaladas organizado pela data de instalação.
+Get-Hotfix | Sort InstalledOn | out-gridView

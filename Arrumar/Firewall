@@ -1,0 +1,5 @@
+# Criar uma regra de liberação de porta
+New-NetFirewallRule -Name "Zabbix" -LocalPort 10050 -Direction Inbound -Protocol TCP -Action Allow
+
+# Desativar o firewall do Windows 
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False

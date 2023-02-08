@@ -1,0 +1,1 @@
+powershell –c “(new-object System.Net.WebClient).DownloadFile(‘https://releases.ubuntu.com/20.04/ubuntu-20.04.4-live-server-amd64.iso’,’C:\tmp\ubuntu-20.04.4-live-server-amd64.iso’)”
