@@ -1,0 +1,169 @@
+##Programa de certidficacao AZ-500 - TFTEC
+## Conectando no Azure - Caso você for executar este script via powershell na sua máquina local, descomente a linha abaixo para autenticar no Azure.
+Connect-AzAccount
+
+## Definindo as variaveis de rede
+$ResourceGroup  = "RG-AZ500"
+$Location       = "eastus"
+$vNetName1       = "VNET-SPOKE1"
+$vNetName2       = "VNET-SPOKE2"
+$vNetNameHub       = "VNET-HUB"
+$AddressSpace1   = "10.10.0.0/24"
+$AddressSpace2   = "192.168.0.0/24"
+$AddressSpaceHub   = "172.16.0.0/16"
+$SubnetIPRange1 = "10.10.0.0/27"
+$SubnetIPRange2 = "192.168.0.0/27"
+$SubnetIPRangeHub = "172.16.0.0/27"
+$SubnetIPRangeFW = "172.16.1.0/26"
+$SubnetName1    = "SUB-LAN-SPK01"
+$SubnetName2    = "SUB-LAN-SPK02"
+$SubnetNameHub    = "SUB-HUB"
+$SubnetNameFw    = "AzureFirewallSubnet"
+
+
+## Criar Resource Groups
+New-AzResourceGroup -Name $ResourceGroup -Location $Location
+
+
+## Criar a Virtual Network SPOKE01
+$vNetwork = New-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name $vNetName1 -AddressPrefix $AddressSpace1 -Location $location
+
+## Criar as Subnets
+Add-AzVirtualNetworkSubnetConfig -Name $SubnetName1 -VirtualNetwork $vNetwork -AddressPrefix $SubnetIPRange1
+
+## Criar o Network Security Group 
+$networkSecurityGroupSPOKE1 = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Location $Location -Name "NSG-SPOKE1"
+
+## Setar NSG para Subnets
+Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $vNetwork -Name $SubnetName1 -AddressPrefix $SubnetIPRange1 -NetworkSecurityGroup $networkSecurityGroupSPOKE1
+Set-AzVirtualNetwork -VirtualNetwork $vNetwork
+
+
+
+
+## Criar a Virtual Network SPOKE02
+$vNetwork = New-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name $vNetName2 -AddressPrefix $AddressSpace2 -Location $location
+
+## Criar as Subnets
+Add-AzVirtualNetworkSubnetConfig -Name $SubnetName2 -VirtualNetwork $vNetwork -AddressPrefix $SubnetIPRange2
+
+## Criar o Network Security Group 
+$networkSecurityGroupSPOKE2 = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Location $Location -Name "NSG-SPOKE2"
+
+## Setar NSG para Subnets
+Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $vNetwork -Name $SubnetName2 -AddressPrefix $SubnetIPRange2 -NetworkSecurityGroup $networkSecurityGroupSPOKE2
+Set-AzVirtualNetwork -VirtualNetwork $vNetwork
+
+
+
+
+## Criar a Virtual Network HUB
+$vNetwork = New-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name $vNetNameHub -AddressPrefix $AddressSpaceHub -Location $location
+
+## Criar as Subnets
+Add-AzVirtualNetworkSubnetConfig -Name $SubnetNameHub -VirtualNetwork $vNetwork -AddressPrefix $SubnetIPRangeHub
+Add-AzVirtualNetworkSubnetConfig -Name $SubnetNameFw -VirtualNetwork $vNetwork -AddressPrefix $SubnetIPRangeFw
+
+## Criar o Network Security Group 
+$networkSecurityGroupHUB = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Location $Location -Name "NSG-HUB"
+
+## Setar NSG para Subnets
+Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $vNetwork -Name $SubnetNameHub -AddressPrefix $SubnetIPRangeHub -NetworkSecurityGroup $networkSecurityGroupHUB
+Set-AzVirtualNetwork -VirtualNetwork $vNetwork
+
+
+
+
+
+
+##VM 01
+## Definir as variaveis da maquina virtual Windows
+$vNet       = Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name $vNetName1
+$Subnet     = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName1 -VirtualNetwork $vNet
+$vmName     = "VM-WIN1"
+$pubName    = "MicrosoftWindowsServer"
+$offerName  = "WindowsServer"
+$skuName    = "2019-Datacenter"
+$vmSize     = "Standard_DS1_v2"
+$pipName    = "$vmName-pip" 
+$nicName    = "$vmName-nic"
+$osDiskName = "$vmName-OsDisk"
+$osDiskType = "Standard_LRS"
+
+## Definir credinciais de admin da VM
+$adminUsername = 'rafael.admin'
+$adminPassword = '@#Rafa,321@#'
+$adminCreds    = New-Object PSCredential $adminUsername, ($adminPassword | ConvertTo-SecureString -AsPlainText -Force)
+
+## Criar IP publico e interface de rede NIC
+#$pip = New-AzPublicIpAddress -Name $pipName -ResourceGroupName $ResourceGroup -Location $location -AllocationMethod Static 
+$nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $ResourceGroup -Location $location -SubnetId $Subnet.Id #-PublicIpAddressId $pip.Id
+
+## Adicionando as configuracoes da maquina virtual
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $vmSize
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+## Setando os parametros do sistema operacional 
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $adminCreds
+
+## Setando a imagem utilizada na maquina virtual
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $pubName -Offer $offerName -Skus $skuName -Version 'latest'
+
+## Setando as configuracoes de disco
+Set-AzVMOSDisk -VM $vmConfig -Name $osDiskName -StorageAccountType $osDiskType -CreateOption fromImage
+
+## Desabilitando o diagnostico de boot
+Set-AzVMBootDiagnostic -VM $vmConfig -Disable
+
+## Criando a maquina virtual
+New-AzVM -ResourceGroupName $ResourceGroup -Location $location -VM $vmConfig
+
+
+
+
+##VM 02
+## Definir as variaveis da maquina virtual Windows
+$vNet       = Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name $vNetName2
+$Subnet     = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName2 -VirtualNetwork $vNet
+$vmName     = "VM-WIN2"
+$pubName    = "MicrosoftWindowsServer"
+$offerName  = "WindowsServer"
+$skuName    = "2019-Datacenter"
+$vmSize     = "Standard_DS1_v2"
+$pipName    = "$vmName-pip" 
+$nicName    = "$vmName-nic"
+$osDiskName = "$vmName-OsDisk"
+$osDiskType = "Standard_LRS"
+
+## Definir credinciais de admin da VM
+$adminUsername = 'rafael.admin'
+$adminPassword = '@#Rafa,321@#'
+$adminCreds    = New-Object PSCredential $adminUsername, ($adminPassword | ConvertTo-SecureString -AsPlainText -Force)
+
+## Criar IP publico e interface de rede NIC
+#$pip = New-AzPublicIpAddress -Name $pipName -ResourceGroupName $ResourceGroup -Location $location -AllocationMethod Static 
+$nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $ResourceGroup -Location $location -SubnetId $Subnet.Id #-PublicIpAddressId $pip.Id
+
+## Adicionando as configuracoes da maquina virtual
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $vmSize
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+## Setando os parametros do sistema operacional 
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $adminCreds
+
+## Setando a imagem utilizada na maquina virtual
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $pubName -Offer $offerName -Skus $skuName -Version 'latest'
+
+## Setando as configuracoes de disco
+Set-AzVMOSDisk -VM $vmConfig -Name $osDiskName -StorageAccountType $osDiskType -CreateOption fromImage
+
+## Desabilitando o diagnostico de boot
+Set-AzVMBootDiagnostic -VM $vmConfig -Disable
+
+## Criando a maquina virtual
+New-AzVM -ResourceGroupName $ResourceGroup -Location $location -VM $vmConfig
+
+
+
+
+
