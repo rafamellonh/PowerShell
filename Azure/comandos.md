@@ -364,3 +364,107 @@ hashtable para fornecer os parâmetros.
 Esse comando retorna informações sobre todos os planos de
 serviço do Azure App Service no grupo de recursos
 "MeuGrupoDeRecursos"
+
+### Comando 41:
+
+ * Get-AzAppServicePlan | Where-Object { $_.Tags.Environment -eq
+"Production" }
+
+Esse comando retorna todos os planos de serviço do Azure App
+Service que possuem a tag "Environment" com o valor
+"Production".
+
+### Comando 42:Get-AzAppServicePlan | Sort-Object -Property Name -Descending |
+
+* Select-Object -First 5
+
+Esse comando retorna os cinco primeiros planos de serviço do
+Azure App Service encontrados, classificados em ordem
+decrescente pelo nome.
+
+### Comando 43:
+
+& New-AzAppServicePlan -ResourceGroupName
+"MeuGrupoDeRecursos" -Name "NovoPlano" -Location "West
+Europe" -Tier "Free"
+
+Esse comando cria um novo plano de serviço do Azure App
+Service chamado "NovoPlano" no grupo de recursos
+"MeuGrupoDeRecursos", localizado em "West Europe" e com o
+nível "Free".
+
+### Comando 44:
+
+* $appServicePlanParams = @{
+ResourceGroupName = "MeuGrupoDeRecursos"
+Name = "NovoPlano"
+Location = "East US"
+Tier = "Standard"
+WorkerSize = "Medium"
+}
+New-AzAppServicePlan @appServicePlanParams
+
+Esse comando cria um novo plano de serviço do Azure App
+Service utilizando um hashtable para fornecer os parâmetros,
+permitindo maior flexibilidade na definição dos detalhes do plano.
+
+### Comando 45:
+
+*New-AzAppServicePlan -ResourceGroupName
+"MeuGrupoDeRecursos" -Name "NovoPlano" -Location "West
+Europe" -Tier "Premium" -Capacity 2
+
+Esse comando cria um novo plano de serviço do Azure App
+Service chamado "NovoPlano" no grupo de recursos
+"MeuGrupoDeRecursos", localizado em "West Europe", com o nível
+"Premium" e uma capacidade de duas instâncias.
+
+### Comando 46:
+
+* Get-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+
+Esse comando retorna informações sobre todos os aplicativos web
+hospedados no Azure App Service no grupo de recursos
+"MeuGrupoDeRecursos".
+### Comando 47:
+
+* Get-AzWebApp | Where-Object { $_.Tags.Environment -eq
+"Production" }
+
+Esse comando retorna todos os aplicativos web que possuem a tag
+"Environment" com o valor "Production".
+
+### Comando 48:
+
+* Get-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos" |
+Sort-Object -Property Name -Descending | Select-Object -First 5
+
+Esse comando retorna os cinco primeiros aplicativos web
+encontrados no grupo de recursos "MeuGrupoDeRecursos",
+classificados em ordem decrescente pelo nome.
+
+### Comando 49:
+
+* New-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+-Name "NovoAppWeb" -Location "West Europe" -AppServicePlan
+"MeuPlano" -Runtime "DOTNET"
+
+Esse comando cria um novo aplicativo web chamado
+"NovoAppWeb" no grupo de recursos "MeuGrupoDeRecursos",
+localizado em "West Europe", utilizando o plano de serviço
+"MeuPlano" e a plataforma de execução ".NET".
+
+### Comando 50:
+
+* $webAppParams = @{
+ResourceGroupName = "MeuGrupoDeRecursos"
+Name = "NovoAppWeb"
+Location = "East US"
+AppServicePlan = "MeuPlano"
+Runtime = "NODE"
+}
+New-AzWebApp @webAppParams
+
+Esse comando cria um novo aplicativo web utilizando um hashtable
+para fornecer os parâmetros, permitindo maior flexibilidade na
+definição dos detalhes do aplicativo
