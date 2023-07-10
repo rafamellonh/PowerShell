@@ -256,3 +256,111 @@ Restart-AzVM -VM $vm
 Esse comando obtém a máquina virtual chamada "MinhaVM" no
 grupo de recursos "MeuGrupoDeRecursos" e a reinicia usando o
 objeto de máquina virtual armazenado na variável $vm.
+
+### Comando 31:
+
+* Remove-AzVM -ResourceGroupName "MeuGrupoDeRecursos"
+-Name "MinhaVM" -Force
+
+Esse comando exclui a máquina virtual chamada "MinhaVM" no
+grupo de recursos "MeuGrupoDeRecursos" de forma irreversível. O
+uso do parâmetro -Force é necessário para confirmar a exclusão
+sem solicitar confirmação adicional.
+### Comando 32:
+
+* $vm = Get-AzVM -ResourceGroupName "MeuGrupoDeRecursos"
+-Name "MinhaVM"
+Remove-AzVM -VM $vm -Force -DeleteVHD
+
+Esse comando obtém a máquina virtual chamada "MinhaVM" no
+grupo de recursos "MeuGrupoDeRecursos" e a exclui, juntamente
+com seus recursos associados, incluindo os discos rígidos virtuais
+(VHDs). O parâmetro -DeleteVHD é usado para excluir também os
+VHDs relacionados.
+
+### Comando 33:
+
+* $vmNames = "VM1", "VM2", "VM3"Remove-AzVM -ResourceGroupName "MeuGrupoDeRecursos"
+-Name $vmNames -Force
+
+Esse comando remove várias máquinas virtuais de uma vez. Os
+nomes das VMs são especificados em um array ($vmNames) e
+todas elas são excluídas no grupo de recursos
+"MeuGrupoDeRecursos" sem solicitar confirmação adicional.
+
+### Comando 34:
+
+* Get-AzStorageAccount -ResourceGroupName
+"MeuGrupoDeRecursos"
+
+Esse comando retorna informações detalhadas sobre todas as
+contas de armazenamento no grupo de recursos
+"MeuGrupoDeRecursos".
+
+### Comando 35:
+
+* Get-AzStorageAccount | Where-Object { $_.Tags.Environment -eq
+"Production" }
+
+Esse comando retorna todas as contas de armazenamento que
+possuem a tag "Environment" com o valor "Production".
+
+### Comando 36:
+
+* Get-AzStorageAccount -ResourceType
+"Microsoft.Storage/storageAccounts" -TagName "Department"
+-TagValue "Finance"
+
+Esse comando retorna todas as contas de armazenamento com o
+tipo "Microsoft.Storage/storageAccounts" que possuem a tag
+"Department" com o valor "Finance".
+
+### Comando 37:
+
+* New-AzStorageAccount -ResourceGroupName
+"MeuGrupoDeRecursos" -Name "NovaContaDeArmazenamento"
+-SkuName "Standard_LRS" -Location "East US"
+
+Esse comando cria uma nova conta de armazenamento chamada
+"NovaContaDeArmazenamento" no grupo de recursos
+"MeuGrupoDeRecursos", utilizando o SKU "Standard_LRS" e
+localizada na região "East US".
+
+### Comando 38:
+
+* $storageParams = @{
+ResourceGroupName = "MeuGrupoDeRecursos"
+Name = "NovaContaDeArmazenamento"
+SkuName = "Standard_LRS"
+Location = "West Europe"
+}
+New-AzStorageAccount @storageParams
+
+Esse comando cria uma nova conta de armazenamento usando um
+hashtable para fornecer os parâmetros, permitindo uma forma mais
+flexível e personalizada de criação da conta.
+
+### Comando 39:
+
+* $storageConfig = @{ResourceGroupName = "MeuGrupoDeRecursos"
+Name = "NovaContaDeArmazenamento"
+SkuName = "Standard_GRS"
+Location = "Brazil South"
+AccessTier = "Hot"
+EnableHttpsTrafficOnly = $true
+}
+New-AzStorageAccount @storageConfig
+
+Esse comando cria uma nova conta de armazenamento com
+configurações adicionais, como definição do acesso Tier como
+"Hot" e a restrição para permitir apenas tráfego HTTPS, utilizando o
+hashtable para fornecer os parâmetros.
+
+### Comando 40:
+
+* Get-AzAppServicePlan -ResourceGroupName
+"MeuGrupoDeRecursos"
+
+Esse comando retorna informações sobre todos os planos de
+serviço do Azure App Service no grupo de recursos
+"MeuGrupoDeRecursos"
