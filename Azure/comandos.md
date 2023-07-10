@@ -890,16 +890,20 @@ chaves chamado "MeuCofreDeChaves" no grupo de recursos
 Esse comando retorna todos os cofres de chaves que possuem a
 tag "Environment" com o valor "Production".
 
-Comando 91:
-New-AzKeyVault -ResourceGroupName "MeuGrupoDeRecursos"
+### Comando 91:
+
+* New-AzKeyVault -ResourceGroupName "MeuGrupoDeRecursos"
 -Name "MeuCofreDeChaves" -Location "East US" -Sku "Standard"
 -EnabledForTemplateDeployment $true
+
 Esse comando cria um novo cofre de chaves chamado
 "MeuCofreDeChaves" no grupo de recursos
 "MeuGrupoDeRecursos". Ele está localizado na região "East US",
 usa o SKU "Standard" e permite implantação de modelos.
-Comando 92:
-$keyVaultParams = @{
+
+### Comando 92:
+
+* $keyVaultParams = @{
 ResourceGroupName = "MeuGrupoDeRecursos"
 Name = "MeuCofreDeChaves"
 Location = "West Europe"
@@ -908,131 +912,188 @@ EnabledForDeployment = $true
 EnabledForTemplateDeployment = $true
 }
 New-AzKeyVault @keyVaultParams
+
 Esse comando cria um novo cofre de chaves usando um hashtable
 para fornecer os parâmetros, permitindo maior flexibilidade na
 definição dos detalhes do cofre de chaves.
-Comando 93:
-New-AzKeyVault -ResourceGroupName "MeuGrupoDeRecursos"
+
+### Comando 93:
+
+* New-AzKeyVault -ResourceGroupName "MeuGrupoDeRecursos"
 -Name "MeuCofreDeChaves" -Location "West Europe" -Sku
 "Standard" -SoftDeleteRetentionInDays 90Esse comando cria um novo cofre de chaves chamado
 "MeuCofreDeChaves" no grupo de recursos
 "MeuGrupoDeRecursos". Ele está localizado na região "West
 Europe", usa o SKU "Standard" e retém os dados excluídos por 90
 dias.
-Comando 94:
-Get-AzKeyVaultSecret -VaultName "MeuCofreDeChaves"
+
+### Comando 94:
+
+* Get-AzKeyVaultSecret -VaultName "MeuCofreDeChaves"
+
 Esse comando retorna informações sobre todos os segredos
 armazenados no cofre de chaves chamado "MeuCofreDeChaves".
 Ele mostra detalhes como nome, valor, tipo, entre outros.
-Comando 95:
-Get-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" |
+
+### Comando 95:
+
+*Get-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" |
 Where-Object { $_.Tags.Environment -eq "Production" }
+
 Esse comando retorna todos os segredos armazenados no cofre
 de chaves que possuem a tag "Environment" com o valor
 "Production".
-Comando 96:
-Get-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" -Name
+
+### Comando 96:
+
+* Get-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" -Name
 "MeuSegredo"
+
 Esse comando retorna informações detalhadas sobre o segredo
 chamado "MeuSegredo" no cofre de chaves "MeuCofreDeChaves".
-Comando 97:$secretValue = ConvertTo-SecureString -String
+
+### Comando 97:
+
+*$secretValue = ConvertTo-SecureString -String
 "MinhaSenhaSecreta" -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" -Name
 "SenhaDB" -SecretValue $secretValue
+
 Esse comando define um novo segredo no cofre de chaves
 chamado "MeuCofreDeChaves". O segredo é chamado "SenhaDB"
 e seu valor é definido como "MinhaSenhaSecreta".
-Comando 98:
-$secretParams = @{
+
+### Comando 98:
+
+* $secretParams = @{
 VaultName = "MeuCofreDeChaves"
 Name = "SenhaAPI"
 SecretValue = "MinhaChaveAPI"
 }
 Set-AzKeyVaultSecret @secretParams
+
 Esse comando define um novo segredo usando um hashtable para
 fornecer os parâmetros. O segredo é definido como "SenhaAPI"
 com o valor "MinhaChaveAPI".
-Comando 99:
-Set-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" -Name
+
+### Comando 99:
+
+* Set-AzKeyVaultSecret -VaultName "MeuCofreDeChaves" -Name
 "ConnectionString" -SecretValue (ConvertTo-SecureString -String
 "MinhaConexaoDB" -AsPlainText -Force)
+
 Esse comando define um novo segredo no cofre de chaves
 chamado "MeuCofreDeChaves". O segredo é chamado
 "ConnectionString" e seu valor é definido como
-"MinhaConexaoDB".Comando 100:
-Get-AzCosmosDBAccount -ResourceGroupName
+"MinhaConexaoDB".
+
+### Comando 100:
+
+* Get-AzCosmosDBAccount -ResourceGroupName
 "MeuGrupoDeRecursos"
+
 Esse comando retorna informações sobre todas as contas do
 Azure Cosmos DB no grupo de recursos "MeuGrupoDeRecursos".
 Ele mostra detalhes como nome, tipo de banco de dados, região,
 entre outros.
-Comando 101:
-Get-AzCosmosDBAccount -Name "MinhaContaCosmosDB"
+
+### Comando 101:
+
+* Get-AzCosmosDBAccount -Name "MinhaContaCosmosDB"
 -ResourceGroupName "MeuGrupoDeRecursos"
+
 Esse comando retorna informações detalhadas sobre a conta do
 Azure Cosmos DB chamada "MinhaContaCosmosDB" no grupo de
 recursos "MeuGrupoDeRecursos".
-Comando 102:
-Get-AzCosmosDBAccount | Where-Object { $_.Tags.Environment
+
+### Comando 102:
+
+* Get-AzCosmosDBAccount | Where-Object { $_.Tags.Environment
 -eq "Production" }
+
 Esse comando retorna todas as contas do Azure Cosmos DB que
 possuem a tag "Environment" com o valor "Production".
-Comando 103:
-New-AzCosmosDBAccount -ResourceGroupName
+
+### Comando 103:
+
+* New-AzCosmosDBAccount -ResourceGroupName
 "MeuGrupoDeRecursos" -Name "MinhaContaCosmosDB" -Location"East US" -Kind "GlobalDocumentDB" -DefaultConsistencyLevel
 "Session"
+
 Esse comando cria uma nova conta do Azure Cosmos DB
 chamada "MinhaContaCosmosDB" no grupo de recursos
 "MeuGrupoDeRecursos". Ela está localizada na região "East US",
 tem o tipo "GlobalDocumentDB" e usa o nível de consistência
 "Session" como padrão.
-Comando 104:
-New-AzCosmosDBAccount -ResourceGroupName
+
+### Comando 104:
+
+* New-AzCosmosDBAccount -ResourceGroupName
 "MeuGrupoDeRecursos" -Name "MinhaContaCosmosDB" -Location
 "West Europe" -Kind "MongoDB" -DefaultConsistencyLevel
 "Eventual"
+
 Esse comando cria uma nova conta do Azure Cosmos DB
 chamada "MinhaContaCosmosDB" no grupo de recursos
 "MeuGrupoDeRecursos". Ela está localizada na região "West
 Europe", tem o tipo "MongoDB" e usa o nível de consistência
 "Eventual" como padrão.
-Comando 105:
-$cosmosDBParams = @{
+
+### Comando 105:
+
+* $cosmosDBParams = @{
 ResourceGroupName = "MeuGrupoDeRecursos"
 Name = "MinhaContaCosmosDB"
 Location = "West Europe"
 Kind = "GlobalDocumentDB"
 DefaultConsistencyLevel = "ConsistentPrefix"
 }
-New-AzCosmosDBAccount @cosmosDBParamsEsse comando cria uma nova conta do Azure Cosmos DB usando
+New-AzCosmosDBAccount @cosmosDBParams
+
+Esse comando cria uma nova conta do Azure Cosmos DB usando
 um hashtable para fornecer os parâmetros, permitindo maior
 flexibilidade na definição dos detalhes da conta.
-Comando 106:
-Get-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+
+### Comando 106:
+
+* Get-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+
 Esse comando retorna informações detalhadas sobre todos os
 aplicativos web hospedados no Azure App Service no grupo de
 recursos "MeuGrupoDeRecursos". Ele mostra detalhes como
 nome, URL, SKU, região, entre outros.
-Comando 107:
-Get-AzWebApp -Name "MeuAppWeb" -ResourceGroupName
+
+### Comando 107:
+
+* Get-AzWebApp -Name "MeuAppWeb" -ResourceGroupName
 "MeuGrupoDeRecursos"
+
 Esse comando retorna informações detalhadas sobre o aplicativo
 web chamado "MeuAppWeb" no grupo de recursos
 "MeuGrupoDeRecursos".
-Comando 108:
-Get-AzWebApp | Where-Object { $_.Tags.Environment -eq
+
+#### Comando 108:
+
+* Get-AzWebApp | Where-Object { $_.Tags.Environment -eq
 "Production" }
+
 Esse comando retorna todos os aplicativos web que possuem a tag
 "Environment" com o valor "Production".
-Comando 109:New-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+
+### Comando 109:
+
+*New-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
 -Name "MeuNovoAppWeb" -AppServicePlan "MeuPlanoDeServico"
 -Runtime "ASP.NET" -Location "West Europe"
+
 Esse comando cria um novo aplicativo web chamado
 "MeuNovoAppWeb" no grupo de recursos "MeuGrupoDeRecursos".
 Ele utiliza o plano de serviço "MeuPlanoDeServico", o runtime
 "ASP.NET" e está localizado na região "West Europe".
-Comando 110:
-$webAppParams = @{
+
+### Comando 110:
+
+* $webAppParams = @{
 ResourceGroupName = "MeuGrupoDeRecursos"
 Name = "MeuNovoAppWeb"
 AppServicePlan = "MeuPlanoDeServico"
@@ -1040,45 +1101,63 @@ Runtime = "Node"
 Location = "East US"
 }
 New-AzWebApp @webAppParams
+
 Esse comando cria um novo aplicativo web usando um hashtable
 para fornecer os parâmetros, permitindo uma forma mais flexível e
 personalizada de criação do aplicativo web.
-Comando 111:
-New-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+
+### Comando 111:
+
+* New-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
 -Name "MeuNovoAppWeb" -AppServicePlan "MeuPlanoDeServico"
 -Runtime "Python" -Location "West Europe"
+
 Esse comando cria um novo aplicativo web chamado
 "MeuNovoAppWeb" no grupo de recursos "MeuGrupoDeRecursos".Ele utiliza o plano de serviço "MeuPlanoDeServico", o runtime
 "Python" e está localizado na região "West Europe".
-Comando 112:
-Get-AzFunctionApp -ResourceGroupName
+
+### Comando 112:
+
+* Get-AzFunctionApp -ResourceGroupName
 "MeuGrupoDeRecursos"
+
 Esse comando retorna informações detalhadas sobre todos os
 aplicativos de função (Function Apps) no Azure no grupo de
 recursos "MeuGrupoDeRecursos". Ele mostra detalhes como
 nome, URL, SKU, região, entre outros.
-Comando 113:
-Get-AzFunctionApp -Name "MeuFunctionApp"
+
+### Comando 113:
+
+* Get-AzFunctionApp -Name "MeuFunctionApp"
 -ResourceGroupName "MeuGrupoDeRecursos"
+
 Esse comando retorna informações detalhadas sobre o aplicativo
 de função chamado "MeuFunctionApp" no grupo de recursos
 "MeuGrupoDeRecursos".
-Comando 114:
-Get-AzFunctionApp | Where-Object { $_.Tags.Environment -eq
+
+### Comando 114:
+
+* Get-AzFunctionApp | Where-Object { $_.Tags.Environment -eq
 "Production" }
+
 Esse comando retorna todos os aplicativos de função que possuem
 a tag "Environment" com o valor "Production".
-Comando 115:New-AzFunctionApp -ResourceGroupName
+
+### Comando 115:
+
+*New-AzFunctionApp -ResourceGroupName
 "MeuGrupoDeRecursos" -Name "MeuNovoFunctionApp"
 -AppServicePlan "MeuPlanoDeServico" -Runtime "DotNet"
 -Location "West Europe"
+
 Esse comando cria um novo aplicativo de função chamado
 "MeuNovoFunctionApp" no grupo de recursos
 "MeuGrupoDeRecursos". Ele utiliza o plano de serviço
 "MeuPlanoDeServico", o runtime ".NET" e está localizado na região
 "West Europe".
-Comando 116:
-$functionAppParams = @{
+### Comando 116:
+
+* $functionAppParams = @{
 ResourceGroupName = "MeuGrupoDeRecursos"
 Name = "MeuNovoFunctionApp"
 AppServicePlan = "MeuPlanoDeServico"
@@ -1086,78 +1165,115 @@ Runtime = "Node"
 Location = "East US"
 }
 New-AzFunctionApp @functionAppParams
+
 Esse comando cria um novo aplicativo de função usando um
 hashtable para fornecer os parâmetros, permitindo uma forma mais
 flexível e personalizada de criação do aplicativo de função.
-Comando 117:
-New-AzFunctionApp -ResourceGroupName
+
+### Comando 117:
+
+* New-AzFunctionApp -ResourceGroupName
 "MeuGrupoDeRecursos" -Name "MeuNovoFunctionApp"
 -AppServicePlan "MeuPlanoDeServico" -Runtime "Python"
 -Location "West Europe"
+
 Esse comando cria um novo aplicativo de função chamado
 "MeuNovoFunctionApp" no grupo de recursos"MeuGrupoDeRecursos". Ele utiliza o plano de serviço
 "MeuPlanoDeServico", o runtime "Python" e está localizado na
 região "West Europe".
-Comando 118:
-Get-AzSqlServer -ResourceGroupName "MeuGrupoDeRecursos"
+
+### Comando 118:
+
+* Get-AzSqlServer -ResourceGroupName "MeuGrupoDeRecursos"
+
 Esse comando retorna informações sobre todos os servidores SQL
 do Azure no grupo de recursos "MeuGrupoDeRecursos". Ele
 fornece detalhes como nome, região, versão, entre outros.
-Comando 119:
-Get-AzSqlServer -Name "MeuServidorSQL" -ResourceGroupName
+
+### Comando 119:
+
+* Get-AzSqlServer -Name "MeuServidorSQL" -ResourceGroupName
 "MeuGrupoDeRecursos"
+
 Esse comando retorna informações detalhadas sobre o servidor
 SQL chamado "MeuServidorSQL" no grupo de recursos
 "MeuGrupoDeRecursos".
-Comando 120:
-Get-AzSqlServer | Where-Object { $_.Tags.Environment -eq
+
+### Comando 120:
+
+* Get-AzSqlServer | Where-Object { $_.Tags.Environment -eq
 "Production" }
+
 Esse comando retorna todos os servidores SQL do Azure que
 possuem a tag "Environment" com o valor "Production".
-Comando 121:$user = New-AzureADUser -DisplayName "John Doe"
+
+### Comando 121:
+
+* $user = New-AzureADUser -DisplayName "John Doe"
 -UserPrincipalName "john.doe@contoso.com" -PasswordProfile
 $passwordProfile -MailNickName "johndoe" -AccountEnabled $true
+
 Esse comando cria um novo usuário com o nome "John Doe" e o
 endereço de email "john.doe@contoso.com". A variável
 $passwordProfile deve conter um objeto contendo a senha do
 usuário. O usuário está habilitado ($true) para acessar a conta.
-Comando 122:
-$user = New-AzureADUser -DisplayName "Jane Smith"
+
+### Comando 122:
+
+* $user = New-AzureADUser -DisplayName "Jane Smith"
 -UserPrincipalName "jane.smith@contoso.com" -PasswordProfile
 $passwordProfile -MailNickName "janesmith" -AccountEnabled
 $true
+
 Esse comando cria um novo usuário com o nome "Jane Smith" e o
 endereço de email "jane.smith@contoso.com". Assim como no
 exemplo anterior, é necessário fornecer um objeto
 $passwordProfile contendo a senha do usuário.
-Comando 123:
-$group = New-AzureADGroup -DisplayName "Finance Group"
+
+### Comando 123:
+
+* $group = New-AzureADGroup -DisplayName "Finance Group"
 -MailEnabled $false -SecurityEnabled $true
+
 Esse comando cria um novo grupo chamado "Finance Group". O
 grupo não é habilitado para envio de emails ($false), mas é um
 grupo de segurança habilitado ($true).
-Comando 124:$group = New-AzureADGroup -DisplayName "Marketing Group"
+
+### Comando 124:
+
+* $group = New-AzureADGroup -DisplayName "Marketing Group"
 -MailEnabled $false -SecurityEnabled $true
+
 Esse comando cria um novo grupo chamado "Marketing Group".
 Assim como no exemplo anterior, o grupo não é habilitado para
 envio de emails, mas é um grupo de segurança.
-Comando 125:
-Add-AzureADGroupMember -ObjectId $group.ObjectId
+
+### Comando 125:
+
+* Add-AzureADGroupMember -ObjectId $group.ObjectId
 -RefObjectId $user.ObjectId
+
 Esse comando adiciona um usuário a um grupo no Azure AD.
-Comando 126:
-$userToAdd = Get-AzureADUser -Filter "UserPrincipalName eq
+
+### Comando 126:
+
+* $userToAdd = Get-AzureADUser -Filter "UserPrincipalName eq
 'john.doe@contoso.com'"
 Add-AzureADGroupMember -ObjectId $group.ObjectId
 -RefObjectId $userToAdd.ObjectId
+
 Esse comando adiciona o usuário com o endereço de email
 "john.doe@contoso.com" ao grupo especificado pelo objeto
 $group. Neste exemplo, o objeto de usuário é obtido usando o
 comando Get-AzureADUser e filtrando pelo UserPrincipalName.
-Comando 127:
-$app = New-AzureADApplication -DisplayName "MyApp"
+
+### Comando 127:
+
+* $app = New-AzureADApplication -DisplayName "MyApp"
 -IdentifierUris "https://myapp.com" -ReplyUrls
-"https://myapp.com/redirect"Esse comando cria uma nova aplicação chamada "MyApp" com o
+"https://myapp.com/redirect"
+
+Esse comando cria uma nova aplicação chamada "MyApp" com o
 URI do identificador definido como "https://myapp.com" e a URL de
 redirecionamento definida como "https://myapp.com/redirect".
 S
