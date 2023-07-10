@@ -468,3 +468,205 @@ New-AzWebApp @webAppParams
 Esse comando cria um novo aplicativo web utilizando um hashtable
 para fornecer os parâmetros, permitindo maior flexibilidade na
 definição dos detalhes do aplicativo
+
+
+### Comando 51:
+
+* New-AzWebApp -ResourceGroupName "MeuGrupoDeRecursos"
+-Name "NovoAppWeb" -Location "West Europe" -AppServicePlanId
+"/subscriptions/12345678-90ab-cdef-ghij-klmnopqrstuv/resourceGroups/MeuGrupoDeRecursos/providers/Microsoft.Web/serverFarms/
+MeuPlano" -RuntimeStack "PHP|7.4"
+
+Esse comando cria um novo aplicativo web chamado
+"NovoAppWeb" no grupo de recursos "MeuGrupoDeRecursos",
+localizado em "West Europe", utilizando o ID do plano de serviço
+(App Service Plan) e especificando a pilha de execução como PHP
+7.4.
+
+### Comando 52:
+
+* Get-AzSQLServer -ResourceGroupName "MeuGrupoDeRecursos"
+
+Esse comando retorna informações sobre todos os servidores SQL
+do Azure no grupo de recursos "MeuGrupoDeRecursos".
+
+### Comando 53:
+
+* Get-AzSQLServer | Where-Object { $_.Tags.Environment -eq
+"Production" }
+
+Esse comando retorna todos os servidores SQL do Azure que
+possuem a tag "Environment" com o valor "Production".
+
+### Comando 54:
+
+*Get-AzSQLServer -ResourceGroupName "MeuGrupoDeRecursos"
+| Sort-Object -Property Name -Descending | Select-Object -First 5
+
+Esse comando retorna os cinco primeiros servidores SQL do Azure
+encontrados no grupo de recursos "MeuGrupoDeRecursos",
+classificados em ordem decrescente pelo nome.
+
+### Comando 55:
+
+* New-AzSQLServer -ResourceGroupName "MeuGrupoDeRecursos"
+-ServerName "NovoServerSQL" -Location "West Europe"
+-AdministratorLogin "admin" -AdministratorLoginPassword
+(ConvertTo-SecureString -String "MinhaSenhaSegura" -AsPlainText
+-Force)
+
+Esse comando cria um novo servidor SQL do Azure chamado
+"NovoServerSQL" no grupo de recursos "MeuGrupoDeRecursos",
+localizado em "West Europe", especificando o nome de usuário do
+administrador ("admin") e uma senha segura para a conta do
+administrador.
+
+### Comando 56:
+
+* $serverParams = @{
+ResourceGroupName = "MeuGrupoDeRecursos"
+ServerName = "NovoServerSQL"
+Location = "East US"
+AdministratorLogin = "admin"
+AdministratorLoginPassword = (ConvertTo-SecureString -String
+"MinhaSenhaSegura" -AsPlainText -Force)
+}
+New-AzSQLServer @serverParams
+
+Esse comando cria um novo servidor SQL do Azure utilizando um
+hashtable para fornecer os parâmetros, permitindo maior
+flexibilidade na definição dos detalhes do servidor.
+
+### Comando 57:
+
+* New-AzSQLServer -ResourceGroupName "MeuGrupoDeRecursos"
+-ServerName "NovoServerSQL" -Location "West Europe"-AdministratorLogin "admin" -AdministratorLoginPassword
+(Get-Credential).Password
+
+Esse comando cria um novo servidor SQL do Azure chamado
+"NovoServerSQL" no grupo de recursos "MeuGrupoDeRecursos",
+localizado em "West Europe", especificando o nome de usuário do
+administrador ("admin") e solicitando a senha do administrador por
+meio de uma caixa de diálogo.
+
+### Comando 58:
+
+* Get-AzSQLDatabase -ResourceGroupName
+"MeuGrupoDeRecursos" -ServerName "MeuServerSQL"
+
+* Esse comando retorna informações sobre todos os bancos de
+dados SQL do Azure associados ao servidor "MeuServerSQL" no
+grupo de recursos "MeuGrupoDeRecursos".
+
+### Comando 59:
+
+*Get-AzSQLDatabase | Where-Object { $_.Tags.Environment -eq
+"Production" }
+
+Esse comando retorna todos os bancos de dados SQL do Azure
+que possuem a tag "Environment" com o valor "Production".
+
+### Comando 60:
+
+* Get-AzSQLDatabase -ResourceGroupName
+"MeuGrupoDeRecursos" -ServerName "MeuServerSQL" |
+Sort-Object -Property Name -Descending | Select-Object -First 5
+
+Esse comando retorna os cinco primeiros bancos de dados SQL do
+Azure associados ao servidor "MeuServerSQL" no grupo derecursos "MeuGrupoDeRecursos", classificados em ordem
+decrescente pelo nome.
+
+### Comando 61:
+
+* Set-AzContext -SubscriptionId
+"12345678-90ab-cdef-ghij-klmnopqrstuv"
+
+Esse comando define o contexto atual para a assinatura com o ID
+"12345678-90ab-cdef-ghij-klmnopqrstuv". Ele permite que você
+selecione essa assinatura para executar comandos subsequentes.
+
+### Comando 62:
+
+* $subscription = Get-AzSubscription -SubscriptionName "Minha
+Assinatura"
+Set-AzContext -Context $subscription.Context
+
+Esse comando obtém o objeto de assinatura para a assinatura com
+o nome "Minha Assinatura" e, em seguida, define o contexto atual
+para essa assinatura.
+
+### Comando 63:
+
+* Set-AzContext -TenantId "abcdefgh-ijkl-mnop-qrst-uvwxyz012345"
+
+Esse comando define o contexto atual para a assinatura associada
+ao locatário (tenant) com o ID
+"abcdefgh-ijkl-mnop-qrst-uvwxyz012345".
+
+### Comando 64:
+
+* Get-AzVirtualNetwork -ResourceGroupName
+"MeuGrupoDeRecursos"
+
+Esse comando retorna informações detalhadas sobre todas as
+redes virtuais no grupo de recursos "MeuGrupoDeRecursos".
+
+### Comando 65:
+
+* Get-AzVirtualNetwork | Where-Object { $_.Tags.Environment -eq
+"Production" }
+
+Esse comando retorna todas as redes virtuais que possuem a tag
+"Environment" com o valor "Production".
+
+### Comando 66:
+
+* Get-AzVirtualNetwork -Name "MinhaRedeVirtual"
+-ResourceGroupName "MeuGrupoDeRecursos"
+
+Esse comando retorna informações detalhadas da rede virtual
+chamada "MinhaRedeVirtual" no grupo de recursos
+"MeuGrupoDeRecursos".
+
+### Comando 67:
+
+* New-AzVirtualNetwork -ResourceGroupName
+"MeuGrupoDeRecursos" -Name "MinhaRedeVirtual" -AddressPrefix
+"10.0.0.0/16" -Location "East US"
+
+Esse comando cria uma nova rede virtual com o nome
+"MinhaRedeVirtual" no grupo de recursos "MeuGrupoDeRecursos",usando o prefixo de endereço IP "10.0.0.0/16" e localizada na
+região "East US".
+
+### Comando 68:
+
+* New-AzVirtualNetwork -ResourceGroupName
+"MeuGrupoDeRecursos" -Name "MinhaRedeVirtual" -AddressPrefix
+"192.168.0.0/16" -Subnet $subnetParams
+
+Esse comando cria uma nova rede virtual com o nome
+"MinhaRedeVirtual" no grupo de recursos "MeuGrupoDeRecursos",
+usando o prefixo de endereço IP "192.168.0.0/16" e especificando
+as sub-redes por meio de um objeto de parâmetro.
+
+### Comando 69:
+
+* $vnetParams = @{
+ResourceGroupName = "MeuGrupoDeRecursos"
+Name = "MinhaRedeVirtual"
+AddressPrefix = "10.0.0.0/16"
+Location = "West Europe"
+}
+New-AzVirtualNetwork @vnetParams
+
+Esse comando cria uma nova rede virtual usando um hashtable
+para fornecer os parâmetros, permitindo uma forma mais flexível e
+personalizada de criação da rede virtual.
+
+### Comando 70: 
+
+* Get-AzNetworkInterface -ResourceGroupName
+"MeuGrupoDeRecursos"
+
+Esse comando retorna informações sobre todas as interfaces de
+rede no grupo de recursos "MeuGrupoDeRecursos".
