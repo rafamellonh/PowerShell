@@ -14,4 +14,4 @@ $server = “VM-DC-PRD”
 
 Get-ADUser -SearchBase $ou -filter * | ForEach-Object {
 $newUpn = $_.UserPrincipalName.Replace($oldSuffix,$newSuffix)
-$_ | Set-ADUser -server $server -UserPrincipalName $newUpn
+$_ | Set-ADUser -server $server -UserPrincipalName $newUpn}
