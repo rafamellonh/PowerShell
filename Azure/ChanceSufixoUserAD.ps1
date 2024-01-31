@@ -9,10 +9,11 @@ $oldSuffix = "tfteccompany.com.br"
 $newSuffix = "tfteccompany.onmicrosoft.com"
 
 #Specify the OU this script will target
-$ou = â€œOU=Departamentos,DC=tfteccompany,DC=com,DC=brâ€
+$ou = "OU=Departamentos,DC=tfteccompany,DC=com,DC=br"
+
 
 #Specify a writeable domain controller
-$server = â€œVM-DC-PRDâ€
+$server = "VM-DC-PRD"
 
 Get-ADUser -SearchBase $ou -filter * | ForEach-Object {
 $newUpn = $_.UserPrincipalName.Replace($oldSuffix,$newSuffix)
