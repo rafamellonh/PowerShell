@@ -1,3 +1,5 @@
+#Habilitar Winrm
+get-Service | Where-Object {$_.name -like "*Winrm*"} | Set-Service -StartupType Automatic -Status Running
 
 
 #### PSRemoting ####
