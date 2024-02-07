@@ -4,4 +4,7 @@ New-Item -ItemType Directory -Path (Join-Path -Path "C:\files" -ChildPath "scrip
 New-Item -ItemType Directory -Path (Join-Path -Path "C:\files" -ChildPath "temp")
 
 
-me
+#Move the files to the scripts folder
+
+# WinSCP.ps1
+# SendEmail.ps1
