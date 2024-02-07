@@ -31,9 +31,9 @@ $tableHtml = $objects | ConvertTo-Html -Property Day, Date, Time, Status -Fragme
 # Configurations of the e-mail
 $smtpCredential = Import-Clixml -Path "C:\files\scripts\CredenciaisCriptografadas.xml"
 $smtpServer = "smtp-mail.outlook.com"
-$smtpFrom = "rafacaaz01@outlook.com"
-$smtpTo = "rafael.demello@cgi.com"
-$messageSubject = "DUC - MWSAG-FileTransferToHQ"
+$smtpFrom = "rafa01@outlook.com"
+$smtpTo = "rafa01@outlook.com"
+$messageSubject = "FileTransferToHQ"
 $messageBody = "`r`n`r`nLast 10 tasks:`r`n$tableHtml"
 
 
