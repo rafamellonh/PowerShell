@@ -1,4 +1,3 @@
-
 #This is a simple script to send email with @outlook.com and password encryption with Export-Clixml
 #To generate the xml file with the password, execute the command :
 #   Get-Credential | Export-Clixml -Path "C:\files\scripts\CredenciaisCriptografadas.xml"   (run this before running the script)
@@ -8,8 +7,10 @@
 # file address
 $file = "C:\files\logs\TransferToHQ-Result.txt"
 
+
 # Gets the last 3 lines of the file
 $lastlines = Get-Content -Path $file | Select-Object -Last 10
+$try = Get-Content -Path "C:\files\logs\tryCount.txt" | Select-Object -Last 1
 
 # your data
 $data = $lastlines
@@ -28,13 +29,14 @@ $objects = $data | ForEach-Object {
 # Build a border-formatted table in HTML
 $tableHtml = $objects | ConvertTo-Html -Property Day, Date, Time, Status -Fragment -PreContent '<style>table { border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; }</style>' | Out-String
 
+
 # Configurations of the e-mail
 $smtpCredential = Import-Clixml -Path "C:\files\scripts\CredenciaisCriptografadas.xml"
 $smtpServer = "smtp-mail.outlook.com"
 $smtpFrom = "rafa01@outlook.com"
 $smtpTo = "rafa01@outlook.com"
 $messageSubject = "FileTransferToHQ"
-$messageBody = "`r`n`r`nLast 10 tasks:`r`n$tableHtml"
+$messageBody = "`r`n`r`nLast 10 tasks:`r`n$tableHtml  $try"
 
 
 # Setting parameters for email
@@ -52,5 +54,6 @@ $mailParams = @{
 
 # send the e-mail
 Send-MailMessage @mailParams
+
 
 
