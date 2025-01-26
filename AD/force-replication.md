@@ -1,4 +1,4 @@
-### Aqui cada um dos parâmetros explicados:
+#### Aqui cada um dos parâmetros explicados:
 * /syncall: Sincroniza o domain controller principal com todos os parceiros de replicação;
 * /e: Enterprise… indica que a replicação será estendida a todos os sites remotos;
 * /A:  All; Sincroniza todas as partições do home server;
