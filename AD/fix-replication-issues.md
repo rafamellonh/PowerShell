@@ -32,5 +32,41 @@ dfsrdiag pollad
 
 * Abra no servidor
 
+[](/Images/img01.png)
+[](/Images/img03.png)
+[](/Images/img04.png)
+[](/Images/img05.png)
+[](/Images/img06.png)
+
+* Definir como autoritativo
+
+[](/Images/img07.png)
+
+* Faça o processo nos outros servidores, mas marque somente para o false no msDFSR-Options.
+
+* Rode os comandos em todos os servidores :
+  * aqui vai o nome do servidor autoritativo
+
+```
+ repadmin /syncall vm-adds01 /aped
+```
+ 
+* Para o comando seguinte, instale o gerenciador do DFS  e execute o commando :
+
+```
+dfsrdiag pollad
+```
+
+* Se nao replicar, ative novamente msDFSR-Enabled em todos os servidores :
+
+
+
+[](/Images/img08.png)
+
+* Execute novamente a sincronizacao 
+
+```
+repadmin /syncall vm-adds01 /aped
+```
 
 
