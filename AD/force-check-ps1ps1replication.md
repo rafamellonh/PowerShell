@@ -16,7 +16,7 @@ repadmin /syncall /AdeP
 ```
 
 ```
-repadmin /showreply
+repadmin /showrepl
 repadmin /replsummary
 repadmin /syncall vm-adds01 /Aed
 DCDIAG /Test:replications
