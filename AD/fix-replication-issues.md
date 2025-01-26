@@ -13,7 +13,24 @@
 
 
 
+* Corrigir problemas de replicacao
 
+
+#Comandos utilizados para replicação:
+
+```
+repadmin /syncall vm-adds01 /aped
+```
+```
+dfsrdiag pollad
+```
+
+* dfsrdiag pollad é preciso instalar também o gerenciador do DFS
+
+* Faça backup da pasta SYSVOL
+
+
+* Abra no servidor
 
 
 
