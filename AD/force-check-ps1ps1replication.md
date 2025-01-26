@@ -15,3 +15,12 @@ repadmin /syncall /e /A /P /d /q
 repadmin /syncall /AdeP
 ```
 
+```
+repadmin /showreply
+repadmin /replsummary
+repadmin /syncall vm-adds01 /Aed
+DCDIAG /Test:replications
+DCDIAG /test:dns
+
+```
+
