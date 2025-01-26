@@ -21,6 +21,5 @@ repadmin /replsummary
 repadmin /syncall vm-adds01 /Aed
 DCDIAG /Test:replications
 DCDIAG /test:dns
-
 ```
 
