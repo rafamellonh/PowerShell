@@ -32,15 +32,15 @@ dfsrdiag pollad
 
 * Abra no servidor
 
-[](/Images/img01.png)
-[](/Images/img03.png)
-[](/Images/img04.png)
-[](/Images/img05.png)
-[](/Images/img06.png)
+![](/Images/img01.png)
+![](/Images/img03.png)
+![](/Images/img04.png)
+![](/Images/img05.png)
+![](/Images/img06.png)
 
 * Definir como autoritativo
 
-[](/Images/img07.png)
+![](/Images/img07.png)
 
 * Faça o processo nos outros servidores, mas marque somente para o false no msDFSR-Options.
 
@@ -61,7 +61,7 @@ dfsrdiag pollad
 
 
 
-[](/Images/img08.png)
+![](/Images/img08.png)
 
 * Execute novamente a sincronizacao 
 
